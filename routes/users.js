@@ -36,7 +36,7 @@ router.post('/register', (req, res, next) => {
           // A user with the username already exists, return error
           res
             .status(400)
-            .json({ message: `${req.body.username} already exists in the DB` })
+            .json({ message: `${req.body.username} already exists in the DB ` })
         }
       })
       .catch(reason => {
