@@ -64,10 +64,14 @@ router.post('/login', (req, res, next) => {
         .json({ message: "You don't exist on my database asshole" })
     }
 
-    // Doc found without erros, compare password
+    // Doc found without errors, compare password
     doc.comparePassword('Password123', function (err, isMatch) {
       if (err) throw err
-      res.status(200).json({ message: 'Logged in' })
+      if (isMatch) {
+        res.status(200).json({ message: 'Logged in' })
+      } else {
+        res.status(401).json({ message: 'Invalid creds' })
+      }
     })
   })
 })
