@@ -65,14 +65,10 @@ router.post('/login', (req, res, next) => {
     }
 
     // Doc found without erros, compare password
-    if (doc.comparePassword(req.body.password)) {
-      // Password matched
-      res.status(200).json({
-        message: 'Pending implementation but this is where I pass you the JWT'
-      })
-    } else {
-      res.status(401).json({ message: 'Nice try asshole, invalid password' })
-    }
+    doc.comparePassword('Password123', function (err, isMatch) {
+      if (err) throw err
+      res.status(200).json({ message: 'Logged in' })
+    })
   })
 })
 
