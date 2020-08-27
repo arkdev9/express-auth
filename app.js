@@ -15,10 +15,10 @@ const app = express()
 // DB Setup
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@laniakea-yo4n0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+    process.env.DB_CONECTION,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
   )
-  .then(val => debug('Connected to DB'))
+  .then(val => console.log('Connected to DB'))
   .catch(err => {
     if (err) {
       console.log(`Fuck, didn't connect to DB: ${err}`)
