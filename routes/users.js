@@ -65,14 +65,16 @@ router.post('/login', (req, res, next) => {
     }
 
     // Doc found without errors, compare password
-    doc.comparePassword('Password123', function (err, isMatch) {
-      if (err) throw err
-      if (isMatch) {
-        res.status(200).json({ message: 'Logged in' })
-      } else {
-        res.status(401).json({ message: 'Invalid creds' })
-      }
-    })
+    
+    if (doc.password === req.body.password) {
+      res.status(201).json({ message: 'User successfully logged in' })
+    } else {
+      console.log(req.body.password)
+      console.log(doc.password)
+      res
+        .status(401)
+        .json({ message: "You don't exist on my database asshole" })
+    }
   })
 })
 
