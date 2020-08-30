@@ -14,7 +14,7 @@ router.post('/register', (req, res, next) => {
           // Doesn't exist, create one
           const newUser = new User({
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
             email : req.body.email
           })
           // We're constructing and saving rather than using
