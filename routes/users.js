@@ -15,6 +15,7 @@ router.post('/register', (req, res, next) => {
           const newUser = new User({
             username: req.body.username,
             password: req.body.password
+            email : req.body.email
           })
           // We're constructing and saving rather than using
           // User.create() because our pre-save hook is only
