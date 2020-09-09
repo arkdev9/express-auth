@@ -54,4 +54,8 @@ app.use(function (err, req, res, next) {
   res.json({ error: res.locals.error, message: res.locals.message })
 })
 
+app.use('/peerjs', require('peer').ExpressPeerServer(srv, {
+	debug: true
+}))
+
 module.exports = app
